@@ -92,7 +92,7 @@ class _CameraState extends State<Camera> {
                   //take a photo
                   var videoFile = await controller!.takePicture();
                   File file = File(videoFile.path);
-                  //add into files list
+                  //add photo into files list
                   _homeController.imageFiles.add(file);
                 }
               },
@@ -102,7 +102,7 @@ class _CameraState extends State<Camera> {
               ),
             )),
         _confirmButton(),
-        _closeButton(),
+        _rejectButton(),
         Positioned(
             bottom: 80,
             child: SizedBox(
@@ -157,7 +157,7 @@ class _CameraState extends State<Camera> {
     );
   }
 
-  Positioned _closeButton() {
+  Positioned _rejectButton() {
     return Positioned(
       bottom: 5,
       left: 5,
