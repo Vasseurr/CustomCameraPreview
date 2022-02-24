@@ -4,6 +4,8 @@
 
 Instead of taking photos of a product and taking them one by one when users need to upload anywhere, they can use custom camera preview to take their photos on the same screen, see them as a list and remove them from the list if they want.
 
+## Instruction
+
 <h4> The Camera Preview as in the photo </h4>
 <img src="https://user-images.githubusercontent.com/67058617/155558382-7808ba98-e020-46f7-9215-afbee122960c.png" height="500">
 <h4> Users can take photos via camera button and save in photo list as below </h4>
