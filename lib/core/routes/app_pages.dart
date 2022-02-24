@@ -1,6 +1,6 @@
 import 'package:custom_camera_preview/home/bindings/home_binding.dart';
 import 'package:custom_camera_preview/home/ui/camera.dart';
-import 'package:custom_camera_preview/home/ui/camera_result.dart';
+import 'package:custom_camera_preview/home/ui/photo_list.dart';
 import 'package:custom_camera_preview/home/ui/home_page.dart';
 import 'package:get/get.dart';
 

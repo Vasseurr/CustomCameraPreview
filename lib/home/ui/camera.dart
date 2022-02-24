@@ -67,14 +67,10 @@ class _CameraState extends State<Camera> {
   @override
   Widget build(BuildContext context) {
     if (controller == null || !controller!.value.isInitialized) {
-      return const Text(
-        'Loading',
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 22.0,
-          fontWeight: FontWeight.w600,
-        ),
-      );
+      return const Center(
+          child: CircularProgressIndicator(
+        color: Colors.red,
+      ));
     }
 
     return Stack(
