@@ -40,103 +40,18 @@ You need import 'package:camera/camera.dart' in the camera preview page. Also, y
 
 ## Usage
 
-First, we create a camera preview for the given camera controller.
+If the camera controller is null, return a loading indicator. If not, return custom camera preview with parameters that you must given a empty list with the type of File and a camera controller
 ```
-Positioned.fill(
-  child: AspectRatio(
-    aspectRatio: controller!.value.aspectRatio,
-    child: CameraPreview(controller!)),
-),
-```
-Then, we declare buttons that includes rejected, take a photo, and confirm.
-```
-Positioned(
-  bottom: 5,
-  child: FloatingActionButton(
-    heroTag: "camera",
-    backgroundColor: Colors.white,
-    onPressed: () async {
-      //you can give limit that's user can take how many photo
-      if (_homeController.imageFiles.length != 10) {
-        //take a photo
-        var videoFile = await controller!.takePicture();
-        File file = File(videoFile.path);
-        //add photo into files list
-        _homeController.imageFiles.add(file);
-      }
-    },
-    child: const Icon(
-      Icons.camera_alt,
-      color: Colors.black,
-    ),
-  )),
-  _confirmButton(),
-  _rejectButton(),
-),
-```
-You can take a photo via controller.takePicture() thanks to camera package
-The last part is showing list thats include photos taken by users
-```
-Positioned(
-  bottom: 80,
-  child: SizedBox(
-    height: 80,
-    width: context.width,
-     child: ListView.builder(
-     scrollDirection: Axis.horizontal,
-     itemBuilder: (context, index) {
-       return Container(
-         margin: const EdgeInsets.symmetric(horizontal: 2.0),
-         decoration: BoxDecoration(
-             border: Border.all(width: 2.0, color: Colors.white)),
-         child: index >= _homeController.imageFiles.length
-                        ? Container(color: Colors.white, width: 100)
-                        : Stack(
-                            children: [
-                              Image.file(
-                                _homeController.imageFiles[index],
-                                fit: BoxFit.cover,
-                                height: 100,
-                                width: 100,
-                              ),
-                              Positioned(
-                                top: 2.5,
-                                right: 2.5,
-                                child: Container(
-                                  height: 20,
-                                  width: 20,
-                                  decoration: const BoxDecoration(
-                                      color: Colors.white,
-                                      shape: BoxShape.circle),
-                                  child: GestureDetector(
-                                    onTap: () {
-                                      setState(() {
-                                        _homeController.imageFiles
-                                            .removeAt(index);
-                                      });
-                                    },
-                                    child: const Icon(Icons.close,
-                                        size: 12, color: Colors.black),
-                                  ),
-                                ),
-               ),
-             ],
-           ),
-        );
-      },
-      itemCount: 10,
-    ),
-  )),
-
-```
-You can show all images via Image.file() in any page
-```
-child: Card(
-  child: Image.file(
-     _homeController.imageFiles[index],
-     fit: BoxFit.cover,
-  ),
-),
+if (controller == null || !controller!.value.isInitialized) {
+   return const Center(
+     child: CircularProgressIndicator(
+       color: Colors.red,
+     ));
+   }
+   return CustomCameraPreview(
+     imageFiles: _homeController.imageFiles,
+     cameraController: controller!,
+);
 ```
 
 ## Demo
