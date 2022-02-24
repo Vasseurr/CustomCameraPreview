@@ -40,7 +40,7 @@ You need import 'package:camera/camera.dart' in the camera preview page. Also, y
 
 ## Usage
 
-If the camera controller is null, return a loading indicator. If not, return custom camera preview with parameters that you must given a empty list with the type of File and a camera controller
+If the camera controller is null or uninitialized, return a loading indicator. If not, return custom camera preview with parameters that you must given a empty list with the type of File and a camera controller
 ```
 if (controller == null || !controller!.value.isInitialized) {
    return const Center(
